@@ -5,6 +5,12 @@ class BookingsController < ApplicationController
     else
       @bookings = current_user.bookings.paginate(page: params[:page], per_page: 5)
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @bookings.to_json }
+      format.js
+    end
   end
 
   def new
