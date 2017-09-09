@@ -179,10 +179,11 @@ SimpleForm.setup do |config|
       end
     end
   end
+
   config.wrapper_mappings = {
     check_boxes: :vertical_radio_and_checkboxes,
     radio_buttons: :vertical_radio_and_checkboxes,
-    file: :vertical_file_input,
+    file: :horizontal_file_input,
     boolean: :vertical_boolean,
     datetime: :multi_select_date,
     date: :multi_select_date,

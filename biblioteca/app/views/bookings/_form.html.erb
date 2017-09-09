@@ -2,18 +2,17 @@
 <h2><%= @booking.errors.count %> erros encontrado ao salvar livro:</h2>
 <% end %>
 
-<%= form_for(@booking) do |f| %>
+<%= simple_form_for(@booking, html: {class: 'form-horizontal'}, wrapper: :horizontal_form) do |f| %>
   <% if current_user.role == "admin" %>
-    <%= f.label :user_id, "Usuário" %>
-    <%= f.select :user_id, options_to_user, prompt: "Selecione um usuário"  %>
+    <%= f.association :user, label: "Reservar para" %>
   <% end %>
 
-  <%= f.label :book_id, "Livro" %>
-  <%= f.select :book_id, options_to_book, prompt: "Selecione um livro"  %>
+  <%= f.association :book, label: "Livro" %>
 
+  <%= f.input :reserved_to %>
 
-  <%= f.label :reserved_to %>
-  <%= date_select("booking", "reserved_to") %>
-
-  <%= f.submit "Salvar", class: 'btn btn-primary' %>
+  <div class="col-sm-offset-3">
+    <%= f.submit "Salvar", class: 'btn btn-primary' %>
+    <%= link_to "Voltar", bookings_path, class: 'btn' %>
+  </div>
 <% end %>
