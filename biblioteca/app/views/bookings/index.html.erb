@@ -11,7 +11,7 @@
     <tr>
       <td><%= booking.book.title %></td>
       <td><%= booking.user.email %></td>
-      <td><%= l booking.reserved_to %></td>
+      <td><%= l booking.reserved_to rescue "-" %></td>
     </tr>
   <% end %>
 

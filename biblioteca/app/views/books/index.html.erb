@@ -16,14 +16,16 @@
 
         <% if params[:search].present? %>
         <div class="row">
-          <div class="alert alert-success">
+          <div class="alert alert-success text-center">
             <%= @books.size %> resultados encontrados.
           </div>
         </div>
         <% end %>
       </div>
+
+
       <table class="table table-striped">
-        <tr>
+        <tr class="text-center">
           <th></th>
           <th>Titulo</th>
           <th>Ano de Publicação</th>
@@ -49,7 +51,6 @@
 
       <div class="panel-footer">
         <div class="row">
-
           <div class="col col-xs-offset-3 col-xs-6">
             <nav aria-label="Page navigation" class="text-center">
               <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
@@ -57,7 +58,9 @@
           </div>
           <div class="col-xs-3">
             <div class="pull-right">
-              <%= link_to("Novo livro", new_book_path, class: "btn btn-primary") %>
+              <%= link_to(new_book_path, class: "btn btn-primary") do %>
+                <i class="fa fa-plus"></i> Salvar
+              <% end %>
             </div>
           </div>
         </div>
