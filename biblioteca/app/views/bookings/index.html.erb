@@ -11,7 +11,7 @@
     <tr>
       <td><%= booking.book.title %></td>
       <td><%= booking.user.email %></td>
-      <td><%= booking.reserved_to %></td>
+      <td><%= l booking.reserved_to %></td>
     </tr>
   <% end %>
 
@@ -19,5 +19,4 @@
 
 <%= will_paginate @bookings %>
 
-<%= link_to "Nova reserva", new_booking_path,
-  class: 'btn btn-primary' %>
+<%= link_to "Nova reserva", new_booking_path, class: 'btn btn-primary' %>

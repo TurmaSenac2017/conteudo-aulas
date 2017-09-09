@@ -1,11 +1,13 @@
-<h1><%= I18n.t(:list_authors) %></h1>
+<h1>Autores</h1>
 
-<div class="alert" style="display: none">teste</div>
+<div class="alert" style="display: none"></div>
 
-<%= form_tag authors_path, method: :get do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Pesquisar" %>
-<% end %>
+<div class="row">
+  <%= form_tag authors_path, method: :get do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Pesquisar" %>
+  <% end %>
+</div>
 
 <% if params[:search].present? %>
   <div class="alert alert-success">
@@ -14,8 +16,6 @@
 <% end %>
 
 <div class="row">
-
-
 <table class="table table-striped">
   <tr>
     <th>#</th>
@@ -23,16 +23,17 @@
     <th>Data de Nascimento</th>
     <th></th>
   </tr>
+  
   <% @authors.each do |author| %>
   <tr id="author-<%= author.id %>">
     <td><%= author.id %></td>
     <td><%= author.name %></td>
-    <td><%= I18n.l author.birthdate unless author.birthdate.nil? %></td>
-    <td><%= I18n.l author.updated_at %></td>
-    <td><%= I18n.l author.created_at %></td>
-    <td><%= link_to "Detalhes", author_path(author.id), class: 'btn btn-xs btn-primary' %></td>
-    <td><%= link_to "Editar", edit_author_path(author.id), class: 'btn btn-xs btn-success' %></td>
-    <td><%= link_to "Deletar", author_path(author.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Deseja remover este item?', remote: true } %></td>
+    <td><%= I18n.l author.birthdate rescue "-" %></td>
+    <td class="pull-right">
+      <%= link_to "Detalhes", author_path(author.id), class: 'btn btn-xs btn-primary' %>
+      <%= link_to "Editar", edit_author_path(author.id), class: 'btn btn-xs btn-success' %>
+      <%= link_to "Deletar", author_path(author.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Deseja remover este item?', remote: true } %>
+    </td>
   </tr>
   <% end %>
 </table>
