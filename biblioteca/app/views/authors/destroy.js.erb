@@ -1,0 +1,10 @@
+<% if Author.exists?(@author.id) %>
+  $(".alert").html("Registro não pode ser removido");
+  $(".alert").addClass("alert-danger");
+  $('.alert').show();
+  setTimeout(function(){
+    $('.alert').hide();
+  }, 2000)
+<% else %>
+  $("#author-<%= @author.id %>").remove();
+<% end %>

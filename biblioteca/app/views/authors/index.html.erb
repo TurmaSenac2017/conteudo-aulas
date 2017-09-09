@@ -1,10 +1,6 @@
 <h1><%= I18n.t(:list_authors) %></h1>
 
-<% if flash[:notice] %>
-<div class="alert alert-success">
-  <%= flash[:notice] %>
-</div>
-<% end %>
+<div class="alert" style="display: none">teste</div>
 
 <%= form_tag authors_path, method: :get do %>
   <%= text_field_tag :search, params[:search] %>
@@ -28,7 +24,7 @@
     <th></th>
   </tr>
   <% @authors.each do |author| %>
-  <tr>
+  <tr id="author-<%= author.id %>">
     <td><%= author.id %></td>
     <td><%= author.name %></td>
     <td><%= I18n.l author.birthdate unless author.birthdate.nil? %></td>
@@ -36,9 +32,7 @@
     <td><%= I18n.l author.created_at %></td>
     <td><%= link_to "Detalhes", author_path(author.id), class: 'btn btn-xs btn-primary' %></td>
     <td><%= link_to "Editar", edit_author_path(author.id), class: 'btn btn-xs btn-success' %></td>
-    <td><%= link_to "Deletar", author_path(author.id), method: :delete,
-        data: {confirm: "Voce realmente deseja apagar este autor?"}, class: 'btn btn-xs btn-danger' %></td>
-
+    <td><%= link_to "Deletar", author_path(author.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Deseja remover este item?', remote: true } %></td>
   </tr>
   <% end %>
 </table>
