@@ -9,7 +9,7 @@
 
   <%= f.association :book, label: "Livro" %>
 
-  <%= f.input :reserved_to %>
+  <%= f.input :reserved_to, as: :calendar %>
 
   <div class="col-sm-offset-3">
     <%= f.submit "Salvar", class: 'btn btn-primary' %>

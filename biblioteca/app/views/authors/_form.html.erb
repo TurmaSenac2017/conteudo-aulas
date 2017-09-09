@@ -10,7 +10,7 @@
 
 <%= simple_form_for @author, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
   <%= f.input :name %>
-  <%= f.input :birthdate, as: :datetime %>
+  <%= f.input :birthdate, as: :calendar %>
 
   <div class="col-sm-offset-3">
     <%= f.submit "Salvar", class: "btn btn-primary" %>
