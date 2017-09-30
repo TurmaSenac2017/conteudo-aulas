@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: biblioteca_production
   username: biblioteca
   password: <%= ENV['BIBLIOTECA_DATABASE_PASSWORD'] %>

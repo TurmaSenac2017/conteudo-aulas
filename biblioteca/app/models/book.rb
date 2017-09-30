@@ -7,7 +7,8 @@
 class Book < ApplicationRecord
   belongs_to :author
 
-  validates_presence_of :title, message: "Não pode ser vazio"
+  validates_presence_of :title
+  # validates_presence_of :author
 
   mount_uploader :cover, CoverUploader
 
